@@ -1,11 +1,12 @@
 //set variables
-
-var textArea = document.getElementById("textarea");
-var userInput= document.getElementById("textarea").value;
-var saveButton = document.querySelector(".save");
-
 var NowMoment = moment(); 
 var currentDay = document.getElementById('currentDay'); 
+
+var textArea = document.getElementById("textarea");
+var userInput= document.querySelector(".col-10").value;
+var saveButton = document.querySelector(".save");
+var container = document.querySelector(".container")
+
 
 
 //add curret day and weekday on top of page - moment.js
@@ -18,7 +19,8 @@ saveButton.addEventListener("click", function(){
     console.log("clicked save")
     //only works  for 9am
 
-    localStorage.setItem("userInput", userInput);
+    // localStorage.setItem("userInput", userInput);
+    localStorage.setItem("userInput",JSON.stringify(userInput));
     //second userInput is not being stored in Local Storage
 });
 
@@ -44,4 +46,9 @@ saveButton.addEventListener("click", function(){
 //if block's time <current variable -change color to green
 //else block'stime = current variable - change colro to red
 // else set to green
+
+//make sure it compares the HOUR, not Date
+if (textArea < NowMoment){
+container.setAttribute ("style", "background-color:red");
+}
 
