@@ -1,7 +1,5 @@
 //set variables
 var NowMoment = moment(); 
-var nowHour = moment().format('LT');
-var time= document.querySelector(".hour");
 
 var currentDay = document.getElementById('currentDay'); 
 var textArea = document.getElementById("textarea");
@@ -27,12 +25,28 @@ localStorage.setItem("user-input"+id, text)
 //get previously saved values and display
 function loadEvents () {
     var userInput9= (localStorage.getItem("user-input9"))
-
+    var userInput10= (localStorage.getItem("user-input10"))
+    var userInput11= (localStorage.getItem("user-input11"))
+    var userInput12= (localStorage.getItem("user-input12"))
+    var userInput13= (localStorage.getItem("user-input13"))
+    var userInput14= (localStorage.getItem("user-input14"))
+    var userInput15= (localStorage.getItem("user-input15"))
+    var userInput16= (localStorage.getItem("user-input16"))
+    var userInput17= (localStorage.getItem("user-input17"))
+    
     $("#9").val(userInput9)
+    $("#10").val(userInput10)
+    $("#11").val(userInput11)
+    $("#12").val(userInput12)
+    $("#13").val(userInput13)
+    $("#14").val(userInput14)
+    $("#15").val(userInput15)
+    $("#16").val(userInput16)
+    $("#17").val(userInput17)
 
 
 }
-
+//call function
 loadEvents();
 
 
@@ -41,14 +55,5 @@ loadEvents();
 
 
 
-
-//functionality: changing background color based on time of day
-//compare current time of day with time  in each block
-//use moment.js
-//set up a variable that is equal to the time of day (using monet and compare it to each time block.
-//use a loop with  with (if statement) to compare the variable with the time
-//if block's time <current variable -change color to green
-//else block'stime = current variable - change colro to red
-// else set to green
 
 
