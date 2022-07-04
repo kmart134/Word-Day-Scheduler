@@ -1,38 +1,42 @@
 //set variables
 var NowMoment = moment(); 
+var nowHour = moment().format('LT');
+var time= document.querySelector(".hour");
+
 var currentDay = document.getElementById('currentDay'); 
-
 var textArea = document.getElementById("textarea");
-var userInput= document.querySelector(".col-10").value;
-var saveButton = document.querySelector(".save");
+// var userInput= document.querySelector(".col-10");
 var container = document.querySelector(".container")
+var text;
 
 
-
-//add curret day and weekday on top of page - moment.js
+//curret day and weekday on top of page - moment.js
 currentDay.innerHTML = NowMoment.format('dddd')+"   " + NowMoment.format('MMM Do YY'); 
 
 
+//save user input into local storage
 
-// listen for button click on save button. Store text to localStorage
-saveButton.addEventListener("click", function(){
-    console.log("clicked save")
-    //only works  for 9am
+$(".save").click(function() {
+var text= $(this).siblings("textarea")[0].value
+var id= $(this).siblings("textarea")[0].id
+console.log(text)
+localStorage.setItem("user-input"+id, text)
 
-    // localStorage.setItem("userInput", userInput);
-    localStorage.setItem("userInput",JSON.stringify(userInput));
-    //second userInput is not being stored in Local Storage
-});
+})
 
+//get previously saved values and display
+function loadEvents () {
+    var userInput9= (localStorage.getItem("user-input9"))
 
-// (html provide ID to text area)grab value from associated text area
-
-
-// Save value local to storage
+    $("#9").val(userInput9)
 
 
-//Getting previous saved values ,  (getItem)
-//give associated textarea the value retrived from local storage
+}
+
+loadEvents();
+
+
+
 
 
 
@@ -47,8 +51,4 @@ saveButton.addEventListener("click", function(){
 //else block'stime = current variable - change colro to red
 // else set to green
 
-//make sure it compares the HOUR, not Date
-if (textArea < NowMoment){
-container.setAttribute ("style", "background-color:red");
-}
 
